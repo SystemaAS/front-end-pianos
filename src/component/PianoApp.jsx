@@ -20,7 +20,8 @@ class PianoApp extends Component{
                     <h1>&nbsp;React Application</h1>
                     <Switch>
                         <Route path="/" exact component={LoginComponent} />
-                        <Route path="/pianos" exact component={ListPianosComponent} />
+                        <Route path="/login" exact component={LoginComponent} />
+                        <Route path="/pianos" exact component={ListPianosComponent} onEnter={this.requireAuth} />
                         <Route path="/pianos/update/:id" component={PianoComponent} />
                         <Route path="/pianos/add/-1" component={PianoAddComponent} />
                     </Switch>
@@ -31,5 +32,12 @@ class PianoApp extends Component{
         )
         
     }
+
+    requireAuth(nextState, replace) {
+        const token =localStorage.getItem('token')
+        if (!token) {
+          replace('/login');
+        }
+      }
 }
 export default PianoApp;
