@@ -15,7 +15,7 @@ class ListPianosComponent extends Component {
         this.deleteItemClicked = this.deleteItemClicked.bind(this)
         this.updateItemClicked = this.updateItemClicked.bind(this)
         this.createItemClicked = this.createItemClicked.bind(this)
-        
+            
     }
 
     componentDidMount() {
