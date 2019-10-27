@@ -46,6 +46,8 @@ class ListPianosComponent extends Component {
         console.log('update ' + id)
         this.props.history.push(`/pianos/update/${id}`)
     
+        
+        
     }
 
     createItemClicked() {
