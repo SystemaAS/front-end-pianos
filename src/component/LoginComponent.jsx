@@ -3,7 +3,7 @@ import { Formik, Form, Field, ErrorMessage } from 'formik';
 import PianoService from '../service/PianoService';
 
 class LoginComponent extends Component {
-
+    
     constructor(props) {
         super(props)
        
@@ -15,22 +15,14 @@ class LoginComponent extends Component {
         this.onSubmit = this.onSubmit.bind(this)
         this.validate = this.validate.bind(this)
     }
-
-    componentDidMount() {
-        //TODO
-            
-    }
-
+    
     onSubmit(values) {
         PianoService.login(values.user, values.pwd)
             .then(
                 response => {
                     console.log(response);
-                    this.setState({ message: `Auth app. : OK` })
                     let token = response.data;
                     //JSON.parse(sessionStorage.getItem('data'));
-                    //const token = user.data.id;
-                    //console.log('data!!!:' + token);
                     localStorage.setItem('token', token)
                 }
             

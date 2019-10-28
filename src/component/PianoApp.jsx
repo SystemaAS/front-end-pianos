@@ -35,7 +35,7 @@ class PianoApp extends Component{
 
     requireAuth(nextState, replace) {
         const token =localStorage.getItem('token')
-        if (!token) {
+        if (token) {
           replace('/login');
         }
       }

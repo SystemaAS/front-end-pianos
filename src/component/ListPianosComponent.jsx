@@ -15,11 +15,13 @@ class ListPianosComponent extends Component {
         this.deleteItemClicked = this.deleteItemClicked.bind(this)
         this.updateItemClicked = this.updateItemClicked.bind(this)
         this.createItemClicked = this.createItemClicked.bind(this)
+        //get piano list
+        this.refreshList();
 
     }
 
     componentDidMount() {
-        this.refreshList();
+        //this.refreshList(); --> moved to constructor
     }
 
     refreshList() {
@@ -47,8 +49,6 @@ class ListPianosComponent extends Component {
         console.log('update ' + id)
         this.props.history.push(`/pianos/update/${id}`)
     
-
-        
     }
 
     createItemClicked() {
@@ -89,7 +89,7 @@ class ListPianosComponent extends Component {
                                         </tr>
                                 )
                             }
-                            <tr><button className="btn btn-success" onClick={() => this.createItemClicked()}>Add</button></tr>
+                            <tr><td><button className="btn btn-success" onClick={() => this.createItemClicked()}>Add</button></td></tr>
                         </tbody>
                         
                     </table>
