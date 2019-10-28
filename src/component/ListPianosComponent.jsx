@@ -15,14 +15,16 @@ class ListPianosComponent extends Component {
         this.deleteItemClicked = this.deleteItemClicked.bind(this)
         this.updateItemClicked = this.updateItemClicked.bind(this)
         this.createItemClicked = this.createItemClicked.bind(this)
+        this.logoutClicked = this.logoutClicked.bind(this)
         //get piano list
-        this.refreshList();
+        //this.refreshList();
 
     }
 
     componentDidMount() {
-        //this.refreshList(); --> moved to constructor
+        this.refreshList(); //--> moved to constructor
     }
+    
 
     refreshList() {
         PianoService.retrieveAll()
@@ -56,6 +58,15 @@ class ListPianosComponent extends Component {
         this.props.history.push(`/pianos/add/-1`)
     
     }
+
+    logoutClicked() {
+        console.log('bye bye ... ')
+        sessionStorage.removeItem('token'); 
+        sessionStorage.clear();
+        this.props.history.push(`/login`)
+    
+    }
+
     render() {
         
         return (
@@ -89,7 +100,12 @@ class ListPianosComponent extends Component {
                                         </tr>
                                 )
                             }
-                            <tr><td><button className="btn btn-success" onClick={() => this.createItemClicked()}>Add</button></td></tr>
+                            <tr>
+                                <td>
+                                    <button className="btn btn-success" onClick={() => this.createItemClicked()}>Add</button>
+                                    &nbsp;&nbsp;<button className="btn btn-secondary" onClick={() => this.logoutClicked()}>Logout</button>
+                                </td>
+                            </tr>
                         </tbody>
                         
                     </table>

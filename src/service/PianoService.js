@@ -5,9 +5,10 @@ const LIST_API_URL = `${PIANOS_API_URL}/pianos`
 
 //const LIST_API_URL = '/pianos' --> with proxy (package.json)
 //get the jwt token and wrapp it in order to pass it on in every call (to Spring REST services ) 
-const JWT_TOKEN = localStorage.getItem('token');
-const JWT_CONFIG = { headers: { 'Authorization': 'Bearer ' + JWT_TOKEN }
-}
+const JWT_TOKEN = sessionStorage.getItem('token');
+const JWT_CONFIG = { headers: { 'Authorization': 'Bearer ' + JWT_TOKEN } }
+
+
 
 class PianoService {
     

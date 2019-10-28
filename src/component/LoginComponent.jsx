@@ -22,14 +22,23 @@ class LoginComponent extends Component {
                 response => {
                     console.log(response);
                     let token = response.data;
-                    //JSON.parse(sessionStorage.getItem('data'));
-                    localStorage.setItem('token', token)
-                }
-            
-        )
-        //console.log('hi:' + localStorage.getItem('token'))
-        this.props.history.push(`/pianos`)
+                    if(token){
+                        sessionStorage.setItem('token', token)
+                        if(sessionStorage.getItem('token').length > 0) {
+                            //console.log("Length A:" + sessionStorage.getItem('token').length)
+                            this.props.history.push('/pianos')
+                        }else{
+                            this.props.history.push('/login')    
+                        }
+                        
+                    }else{
+                        sessionStorage.removeItem('token')
+                        //console.log("Length B:" + sessionStorage.getItem('token'))
+                        this.props.history.push('/login')
+                    }
 
+                }
+        )
     }
 
     validate(values) {
