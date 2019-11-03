@@ -11,26 +11,24 @@ class ListPianosComponent extends Component {
             pianos: [],
             message: null
         }
+        this.componentDidMount = this.componentDidMount.bind(this)
         this.refreshList = this.refreshList.bind(this)
         this.deleteItemClicked = this.deleteItemClicked.bind(this)
         this.updateItemClicked = this.updateItemClicked.bind(this)
         this.createItemClicked = this.createItemClicked.bind(this)
         this.logoutClicked = this.logoutClicked.bind(this)
-        //get piano list
-        //this.refreshList();
-
-    }
-
-    componentDidMount() {
-        this.refreshList(); //--> moved to constructor
+        
     }
     
+    componentDidMount(){
+        this.refreshList()
+    }
 
     refreshList() {
         PianoService.retrieveAll()
             .then(
                 response => {
-                    console.log('ListPianoComponent HERE!:' + response);
+                    console.log('ListPianoComponent HERE €€€€€€€:' + response);
                     this.setState ({pianos: response.data})
                 }
             )
@@ -88,6 +86,7 @@ class ListPianosComponent extends Component {
                         </thead>
                         <tbody>
                             {
+                                
                                 this.state.pianos.map(
                                     piano =>
                                         <tr key={piano.pianoId}>

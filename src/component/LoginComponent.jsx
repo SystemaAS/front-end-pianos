@@ -16,6 +16,9 @@ class LoginComponent extends Component {
         this.validate = this.validate.bind(this)
     }
     
+
+    
+    
     onSubmit(values) {
         PianoService.login(values.user, values.pwd)
             .then(
@@ -25,7 +28,7 @@ class LoginComponent extends Component {
                     if(token){
                         sessionStorage.setItem('token', token)
                         if(sessionStorage.getItem('token').length > 0) {
-                            //console.log("Length A:" + sessionStorage.getItem('token').length)
+                            console.log("Length A:" + sessionStorage.getItem('token').length)
                             this.props.history.push('/pianos')
                         }else{
                             this.props.history.push('/login')    
@@ -33,13 +36,15 @@ class LoginComponent extends Component {
                         
                     }else{
                         sessionStorage.removeItem('token')
-                        //console.log("Length B:" + sessionStorage.getItem('token'))
-                        this.props.history.push('/login')
+                        console.log("Length B:" + sessionStorage.getItem('token'))
+                        this.props.history.push('/')
                     }
 
                 }
         )
     }
+    
+
 
     validate(values) {
         let errors = {}
